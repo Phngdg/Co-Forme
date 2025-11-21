@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM PRO - Trang chủ</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. GLOBAL VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary-color: #ff8c4a;
+            --bg-body: #1a1a1a;
+            --bg-card: #000;
+            --bg-input: #2a2a2a;
+            --text-main: #fff;
+            --text-gray: #a0a0a0;
+            --border-color: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Common Section Styles */
+        .section { padding: 80px 0; }
+        .section h2 {
+            text-align: center; font-size: 2.5rem; color: var(--primary-color);
+            margin-bottom: 40px; text-transform: uppercase; font-weight: 800;
+        }
+
+        /* Buttons */
+        .button-primary-body {
+            display: inline-block; background: var(--primary-color); color: #000;
+            padding: 12px 30px; border-radius: 30px; font-weight: bold; text-transform: uppercase;
+            margin-top: 20px;
+        }
+        .button-primary-body:hover { background: #fff; transform: translateY(-2px); }
+
+        .button-secondary-body {
+            display: inline-block; border: 2px solid var(--primary-color); color: var(--primary-color);
+            padding: 10px 30px; border-radius: 30px; font-weight: bold; text-transform: uppercase;
+            margin-top: 20px;
+        }
+        .button-secondary-body:hover { background: var(--primary-color); color: #000; }
+
+        /* =========================================
+           2. HEADER
+           ========================================= */
+        .header {
+            background: #000; border-bottom: 1px solid #333;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 40px; position: sticky; top: 0; z-index: 100;
+        }
+        .logo_header { font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; }
+        .logo_header span { color: var(--primary-color); }
+        
+        .navbar_header ul { display: flex; gap: 25px; align-items: center; }
+        .navbar_header a:hover { color: var(--primary-color); }
+        .button-primary-nav {
+            background: var(--primary-color); color: #000 !important;
+            padding: 8px 20px; border-radius: 4px; font-weight: bold;
+        }
+        .button-primary-nav:hover { background: #fff; }
+
+        @media (max-width: 768px) {
+            .navbar_header { display: none; } 
+            .header { justify-content: center; }
+        }
+
+        /* =========================================
+           3. BANNER SECTION
+           ========================================= */
+        .banner {
+            position: relative; height: 600px; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .banner img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.6; z-index: 1;
+        }
+        .banner-text {
+            position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 20px;
+        }
+        .banner-text h1 {
+            font-size: 3.5rem; font-weight: 900; margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8); line-height: 1.2;
+        }
+        .banner-text p { font-size: 1.2rem; margin-bottom: 10px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
+
+        /* =========================================
+           4. INTRO SECTION
+           ========================================= */
+        .section-gioithieu { background: #111; text-align: center; }
+        .section-gioithieu body { 
+            font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #ccc; 
+            font-family: 'Segoe UI', sans-serif; background: transparent; /* Reset body tag inside section */
+        }
+
+        /* =========================================
+           5. FACILITIES (ZIG-ZAG LAYOUT)
+           ========================================= */
+        .section-gioithieu-cosovatchat { background: #000; }
+        .csvc-list { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        .csvc-item {
+            display: flex; align-items: center; gap: 50px; margin-bottom: 80px;
+        }
+        .csvc-item.reverse { flex-direction: row-reverse; } /* Đảo chiều */
+        
+        .csvc-img { flex: 1; border-radius: 10px; overflow: hidden; border: 1px solid #333; }
+        .csvc-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .csvc-item:hover .csvc-img img { transform: scale(1.05); }
+        
+        .csvc-content { flex: 1; }
+        .csvc-content h3 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 15px; }
+        .csvc-content p { color: #ccc; font-size: 1.1rem; }
+
+        /* =========================================
+           6. SUCCESS STORY (BEFORE/AFTER)
+           ========================================= */
+        .section-gioithieu-cauchuyen { background: #111; }
+        .content-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+        }
+        .text-content .section-title { font-size: 1rem; color: var(--text-gray); text-transform: uppercase; margin-bottom: 10px; }
+        .text-content .main-heading { font-size: 2rem; margin-bottom: 20px; color: #fff; }
+        .text-content .description { color: #ccc; margin-bottom: 30px; }
+        .text-content a { color: var(--primary-color); font-weight: bold; border-bottom: 1px solid var(--primary-color); }
+
+        /* Slider CSS */
+        .comparison-container {
+            position: relative; width: 100%; max-width: 600px; aspect-ratio: 3/2;
+            overflow: hidden; border-radius: 10px; border: 2px solid var(--primary-color);
+            cursor: ew-resize;
+        }
+        .img-after {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+        }
+        .img-before {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+            clip-path: inset(0 50% 0 0); /* Cắt 50% mặc định */
+        }
+        .slider-line {
+            position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+            background: #fff; z-index: 10; pointer-events: none;
+        }
+        .slider-handle {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 40px; height: 40px; background: var(--primary-color); border-radius: 50%;
+            z-index: 11; display: flex; align-items: center; justify-content: center;
+            color: #000; pointer-events: none; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .slider-handle svg { width: 20px; height: 20px; }
+
+        /* =========================================
+           7. SERVICES SECTION
+           ========================================= */
+        .section-dichvu { background: #000; text-align: center; }
+        .service-list {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; max-width: 1100px; margin: 0 auto; padding: 0 20px;
+        }
+        .service-item {
+            background: #111; padding: 30px; border-radius: 10px; border: 1px solid #333; transition: 0.3s;
+        }
+        .service-item:hover { border-color: var(--primary-color); transform: translateY(-5px); }
+        .service-item img {
+            width: 100%; height: 200px; object-fit: cover; border-radius: 6px; margin-bottom: 20px;
+        }
+        .service-item h3 { color: var(--primary-color); margin-bottom: 10px; font-size: 1.3rem; }
+        .service-item p { color: #aaa; font-size: 0.9rem; }
+
+        /* =========================================
+           8. PROMO SECTION
+           ========================================= */
+        .section-khuyenmai { background: linear-gradient(to bottom, #1a1a1a, #000); text-align: center; }
+        .section-khuyenmai p { font-size: 1.2rem; margin-bottom: 30px; color: #ddd; }
+        
+        /* Grid ảnh khuyến mãi */
+        .promo-gallery {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; max-width: 1100px; margin: 0 auto 30px; padding: 0 20px;
+        }
+        .promo-gallery img {
+            width: 100%; height: 250px; object-fit: cover; border-radius: 8px; opacity: 0.8; transition: 0.3s;
+        }
+        .promo-gallery img:hover { opacity: 1; transform: scale(1.02); }
+
+        /* =========================================
+           9. FOOTER
+           ========================================= */
+        .footer { background: #050505; padding: 60px 0 20px; border-top: 1px solid #222; }
+        .footer__container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+        .footer__left, .footer__center, .footer__right { flex: 1; min-width: 250px; }
+        .footer__title { color: #fff; margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; }
+        .footer__menu li, .footer__contact li { margin-bottom: 10px; color: #888; font-size: 0.9rem; }
+        .footer__menu a:hover { color: var(--primary-color); }
+        .footer__bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.8rem; }
+
+        /* =========================================
+           10. RESPONSIVE MOBILE
+           ========================================= */
+        @media (max-width: 768px) {
+            .banner-text h1 { font-size: 2rem; }
+            .content-grid { grid-template-columns: 1fr; }
+            .csvc-item { flex-direction: column !important; gap: 20px; }
+            .csvc-img, .csvc-content { width: 100%; }
+            .promo-gallery { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo_header">GYM<span>COFORME</span></div>
+        <nav class="navbar_header">
+            <ul>
+                <li><a href="#">Dịch vụ</a></li>
+                <li><a href="#">Cơ sở vật chất</a></li>
+                <li><a href="#">Gói tập</a></li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="#">Khuyến mãi</a></li>
+                <li><a href="#" class="button-primary-nav">Đăng ký ngay</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1470&auto=format&fit=crop" alt="Gym Banner">
+        <div class="banner-text">
+            <h1>Tập luyện hôm nay – Sức khỏe ngày mai</h1>
+            <p>Hãy bắt đầu hành trình thay đổi bản thân tại GYM CO FORME!</p>
+            <a href="#" class="button-primary-body">Tham gia ngay</a>
+        </div>
+    </section>
+
+    <section class="section section-gioithieu">
+        <h2>CÔ FORME</h2>
+        <div style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #ccc;">
+            Cô Formes chính thức được thành lập với một cam kết rõ ràng: <br><br>
+            <em style="color:var(--primary-color); font-size:1.4rem">"Mang đến cho Quý khách hàng một thân hình khỏe mạnh, dẻo dai và săn chắc, kiến tạo nên Dáng Vóc hoàn hảo của riêng bạn."</em>
+        </div>
+    </section>
+
+    <section class="section section-gioithieu-cosovatchat">
+        <h2>CƠ SỞ VẬT CHẤT</h2>
+
+        <div class="csvc-list">
+            <div class="csvc-item">
+                <div class="csvc-img">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop" alt="Phòng tập đa năng">
+                </div>
+                <div class="csvc-content">
+                    <h3>Phòng tập đa năng</h3>
+                    <p>Trang bị đầy đủ máy móc hiện đại, phục vụ tất cả các nhu cầu tập luyện từ cardio đến strength training. Không gian rộng rãi, thoáng mát, giúp bạn tập luyện hiệu quả hơn mỗi ngày.</p>
+                </div>
+            </div>
+
+            <div class="csvc-item reverse">
+                <div class="csvc-img">
+                    <img src="https://images.unsplash.com/photo-1590556409324-aa8072c6d8b6?q=80&w=1374&auto=format&fit=crop" alt="Khu vực tiếp tân">
+                </div>
+                <div class="csvc-content">
+                    <h3>Khu vực tiếp tân</h3>
+                    <p>Đội ngũ tiếp tân thân thiện, chuyên nghiệp sẵn sàng hỗ trợ bạn từ khi bước vào phòng tập. Thủ tục nhanh gọn, thông tin đầy đủ, mang lại trải nghiệm dịch vụ cao cấp.</p>
+                </div>
+            </div>
+
+            <div class="csvc-item">
+                <div class="csvc-img">
+                    <img src="https://images.unsplash.com/photo-1590556409324-aa8072c6d8b6?q=80&w=1374&auto=format&fit=crop" alt="Khu vực dinh dưỡng">
+                </div>
+                <div class="csvc-content">
+                    <h3>Khu vực dinh dưỡng & nghỉ ngơi</h3>
+                    <p>Cung cấp các loại thực phẩm bổ sung, nước uống và khu vực lounge để thư giãn sau buổi tập. Không gian thiết kế hiện đại, sạch sẽ, giúp bạn nạp năng lượng và duy trì tinh thần thoải mái.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-gioithieu-cauchuyen">
+        <h2>CÂU CHUYỆN TRUYỀN CẢM HỨNG</h2>
+        <div class="container">
+            <div class="content-grid">
+
+                <div class="text-content">
+                    <h2 class="section-title">Bạn Nguyễn Thị Anh</h2>
+                    <h3 class="main-heading">Tập luyện để thay đổi ngoại hình ngoạn mục</h3>
+                    <p class="description">
+                        Việc luyện tập đều đặn và đúng kỹ thuật, cùng với một chế độ dinh dưỡng hợp lý sẽ giúp cải thiện vóc dáng một cách rõ rệt. Chương trình luyện tập được thiết kế riêng dựa trên chỉ số cơ thể.
+                    </p>
+                    <a href="#">Xem chi tiết hành trình</a>
+                </div>
+
+                <div>
+                    <div id="my-slider" class="comparison-container">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop" alt="After" class="img-after">
+                        
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop" alt="Before" class="img-before">
+
+                        <div class="slider-line"></div>
+
+                        <div class="slider-handle">
+                            <i class="fa-solid fa-arrows-left-right" style="color:#000"></i>
+                        </div>
+                    </div>
+                    <p style="text-align:center; color:#888; margin-top:10px; font-size:0.9rem">Kéo sang trái/phải để xem sự thay đổi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dichvu">
+        <h2>Dịch vụ nổi bật</h2>
+        <div class="service-list">
+            <article class="service-item">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1470&auto=format&fit=crop" alt="PT">
+                <h3>Huấn luyện viên cá nhân</h3>
+                <p>Được hướng dẫn 1-1 giúp bạn đạt mục tiêu nhanh nhất.</p>
+            </article>
+
+            <article class="service-item">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1470&auto=format&fit=crop" alt="Yoga">
+                <h3>Lớp Yoga & Group</h3>
+                <p>Giải tỏa căng thẳng, cải thiện sức khỏe và tinh thần.</p>
+            </article>
+
+            <article class="service-item">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1453&auto=format&fit=crop" alt="Dinh dưỡng">
+                <h3>Tư vấn dinh dưỡng</h3>
+                <p>Xây dựng chế độ ăn phù hợp cho từng thể trạng.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section section-khuyenmai">
+        <h2>Ưu đãi đặc biệt tháng này</h2>
+        <p>Giảm ngay <strong>20%</strong> khi đăng ký gói tập 6 tháng!</p>
+        
+        <div class="promo-gallery">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop" alt="KM1">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1470&auto=format&fit=crop" alt="KM2">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop" alt="KM3">
+            <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop" alt="KM4">
+        </div>
+
+        <a href="#" class="button-secondary-body">Xem chi tiết</a>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__left">
+                <div class="logo_header">GYM<span>COFORME</span></div>
+                <p class="footer__desc">
+                    GymX – Nơi khởi đầu hành trình chinh phục sức mạnh và sức khỏe bền vững.
+                    Hãy tập luyện, thay đổi và tỏa sáng cùng chúng tôi 💪
+                </p>
+            </div>
+            <div class="footer__center">
+                <h3 class="footer__title">Thông tin</h3>
+                <ul class="footer__menu">
+                    <li><a href="#">Dịch vụ</a></li>
+                    <li><a href="#">Cơ sở vật chất</a></li>
+                    <li><a href="#">Gói tập</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Đăng ký ngay</a></li>
+                </ul>
+            </div>
+            <div class="footer__right">
+                <h3 class="footer__title">Liên hệ</h3>
+                <ul class="footer__contact">
+                    <li><strong>Địa chỉ:</strong> 123 Đường Fitness, Q.1, TP.HCM</li>
+                    <li><strong>Hotline:</strong> 0909 999 999</li>
+                    <li><strong>Email:</strong> support@gymx.vn</li>
+                </ul>
+                <div class="footer__map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.469975540108!2d106.700423!3d10.776888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f480d3dfd89%3A0xabc!2sDistrict%201!5e0!3m2!1sen!2s!4v123456789"
+                        width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2025 GymX. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hàm khởi tạo cho mỗi slider bạn muốn có trên trang
+            function initComparisonSlider(containerId) {
+                const container = document.getElementById(containerId);
+                if (!container) return; // Không tìm thấy slider
+
+                const imgBefore = container.querySelector('.img-before');
+                const sliderLine = container.querySelector('.slider-line');
+                const sliderHandle = container.querySelector('.slider-handle');
+
+                let isDragging = false;
+
+                // Hàm cập nhật vị trí slider
+                function updateSliderPosition(x) {
+                    // Lấy thông tin vị trí và kích thước của container
+                    const rect = container.getBoundingClientRect();
+                    
+                    // Tính toán vị trí x của chuột/chạm bên trong container
+                    let newX = x - rect.left;
+
+                    // Đảm bảo vạch chia luôn nằm trong khung ảnh (từ 0 đến chiều rộng)
+                    if (newX < 0) newX = 0;
+                    if (newX > rect.width) newX = rect.width;
+
+                    // Tính toán phần trăm
+                    const percentage = (newX / rect.width) * 100;
+
+                    // Cập nhật CSS
+                    sliderLine.style.left = percentage + '%';
+                    sliderHandle.style.left = percentage + '%';
+                    // Cập nhật clip-path để cắt ảnh "Before"
+                    // Sử dụng clip-path: inset(top right bottom left)
+                    // Cắt từ bên phải vào để hiện ảnh After bên dưới
+                    imgBefore.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+                }
+
+                // === Logic Xử lý sự kiện Chuột (Mouse Events) ===
+
+                // Sự kiện khi bắt đầu kéo (chuột)
+                container.addEventListener('mousedown', (e) => {
+                    e.preventDefault(); 
+                    isDragging = true;
+                    container.classList.add('is-dragging'); // Optional: Thêm class để đổi style khi kéo
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.addEventListener('mouseup', onMouseUp);
+                    // Cập nhật vị trí ngay khi click để tránh độ trễ
+                    updateSliderPosition(e.clientX);
+                });
+
+                // Sự kiện khi di chuyển chuột
+                function onMouseMove(e) {
+                    if (!isDragging) return;
+                    updateSliderPosition(e.clientX);
+                }
+
+                // Sự kiện khi nhả chuột
+                function onMouseUp() {
+                    isDragging = false;
+                    container.classList.remove('is-dragging');
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                }
+
+                // === Logic Xử lý sự kiện Chạm (Touch Events - cho Mobile) ===
+
+                // Sự kiện khi bắt đầu chạm (mobile)
+                container.addEventListener('touchstart', (e) => {
+                    // e.preventDefault(); // Có thể gây lỗi cuộn trang, nên cân nhắc
+                    isDragging = true;
+                    document.addEventListener('touchmove', onTouchMove);
+                    document.addEventListener('touchend', onTouchEnd);
+                    // Cập nhật vị trí ngay khi chạm
+                    updateSliderPosition(e.touches[0].clientX);
+                }, { passive: true }); // Dùng passive: true để tối ưu cuộn trang
+
+                // Sự kiện khi di chuyển ngón tay (mobile)
+                function onTouchMove(e) {
+                    if (!isDragging) return;
+                    // Lấy vị trí của điểm chạm đầu tiên
+                    updateSliderPosition(e.touches[0].clientX);
+                }
+
+                // Sự kiện khi kết thúc chạm (mobile)
+                function onTouchEnd() {
+                    isDragging = false;
+                    document.removeEventListener('touchmove', onTouchMove);
+                    document.removeEventListener('touchend', onTouchEnd);
+                }
+                
+                // Cập nhật vị trí ban đầu (50%) khi container thay đổi kích thước
+                window.addEventListener('resize', () => {
+                    updateSliderPosition(container.getBoundingClientRect().left + container.offsetWidth / 2);
+                });
+
+                // Khởi tạo vị trí ban đầu
+                // Sử dụng setTimeout để đảm bảo layout đã render xong
+                setTimeout(() => {
+                     const initialX = container.getBoundingClientRect().left + container.offsetWidth / 2;
+                     updateSliderPosition(initialX);
+                }, 100);
+
+            }
+
+            // Kích hoạt slider của chúng ta
+            initComparisonSlider('my-slider');
+        });
+    </script>
+
+</body>
+</html>

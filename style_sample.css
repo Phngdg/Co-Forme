@@ -1,0 +1,489 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fefefe;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* nút (button) */
+.button-primary-nav {
+  background: #f44336;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.button-primary-nav:hover {
+  background: white;
+  color: #f44336;
+}
+
+.button-primary-body {
+  background: #f44336;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.button-primary-body:hover {
+  background: #d32f2f;
+}
+
+.button-secondary-body {
+  background: #333;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.button-secondary-body:hover {
+  background: #555;
+}
+
+/* banner */
+.banner {
+  position: relative;
+  text-align: center;
+}
+
+.banner img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.banner-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.banner-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* setup chung cho sections */
+.section {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  color: #f44336;
+  margin-bottom: 30px;
+}
+
+/*section giới thiệu cô forme*/
+.section-gioithieu {
+  background: #fefefe;
+}
+
+.section-gioithieu h2 {
+  color: blue;
+}
+
+.section-gioithieu body {
+  color: #d90f0f;
+}
+
+/*section giới thiệu cơ sở vật chất*/
+.section-gioithieu-cosovatchat {
+  background: #fffcfc;
+}
+
+.section-gioithieu h2 {
+  color: blue;
+}
+
+/*section giới thiệu câu chuyện truyền cảm hứn*/
+.section-gioithieu-cauchuyen {
+  background: #fffcfc;
+}
+
+.section-gioithieu-cauchuyen h2 {
+  color: blue;
+}
+
+.section-gioithieu-cauchuyen a {
+  margin-top: 5PX;
+   color: inherit;
+}
+
+/* section dịch vụ trên trang chủ*/
+.section-dichvu {
+  background: #f9f9f9;
+}
+
+
+.service-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.service-item {
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+}
+
+.service-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.service-item h3 {
+  margin: 15px 0 10px;
+  color: #111;
+}
+
+/* section khuyến mãi trên trang chủ*/
+.section-khuyenmai {
+  background: #ffe6e6;
+}
+
+.section-khuyenmai h2 {
+  margin-bottom: 10px;
+}
+
+.section-khuyenmai p {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.section-khuyenmai img {
+  width: 70%;
+  height: 500px;
+  object-fit: cover;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+/* ---------- Container chung ---------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+/* ---------- News Section ---------- */
+.home__news {
+  padding: 60px 0;
+}
+
+.home__news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.home__news-viewall {
+  font-size: 0.9rem;
+  color: #f44336;
+  text-decoration: none;
+}
+
+/* ---------- Wrapper & Slider ---------- */
+.home__news-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.home__news-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  /* Cho phép cuộn ngang */
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  /* hỗ trợ cuộn mượt trên mobile */
+}
+
+.news-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+  /* 3 card trên 1 hàng */
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(18, 38, 63, 0.06);
+  min-width: 300px;
+  /* đảm bảo đủ lớn khi màn hình nhỏ */
+  scroll-snap-align: start;
+  text-align: left;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  background-color: #f4f8ff;
+  box-shadow: 0 12px 30px rgba(18, 38, 63, 0.08);
+}
+
+/* Ảnh */
+.news-card__image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Nội dung */
+.news-card__title {
+  font-size: 1.1rem;
+  margin: 12px 16px 6px;
+  color: #111;
+  line-height: 1.3;
+}
+
+.news-card__desc {
+  color: #555;
+  margin: 0 16px 16px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Nút điều hướng ---------- */
+.home__news-prev,
+.home__news-next {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  transition: background 0.2s;
+}
+
+.home__news-prev:hover,
+.home__news-next:hover {
+  background: rgba(244, 67, 54, 0.8);
+}
+
+.home__news-prev {
+  left: 10px;
+}
+
+.home__news-next {
+  right: 10px;
+}
+
+/* ---------- Responsive ---------- */
+/* Tablet: 2 card */
+@media (max-width: 992px) {
+  .news-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+
+  .news-card__image img {
+    height: 160px;
+  }
+}
+
+/* Mobile: 1 card */
+@media (max-width: 600px) {
+  .home__news-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .news-card {
+    flex: 0 0 100%;
+    min-width: unset;
+  }
+
+  .news-card__image img {
+    height: 200px;
+  }
+}
+
+
+/*promotion*/
+/* ---------- Offer Section ---------- */
+.home__offers {
+  padding: 60px 0;
+}
+
+.home__offers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.home__offers-viewall {
+  font-size: 0.9rem;
+  color: #f44336;
+  text-decoration: none;
+}
+
+/* ---------- Wrapper & Horizontal Scroll ---------- */
+.home__offers-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.home__offers-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.offer-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+  min-width: 320px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(18, 38, 63, 0.06);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.offer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(18, 38, 63, 0.08);
+}
+
+/* Hình ảnh */
+.offer-card__image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Nội dung */
+.offer-card__content {
+  padding: 20px;
+  text-align: left;
+}
+
+.offer-card__tag {
+  display: inline-block;
+  background-color: #ff7b4d;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.offer-card__title {
+  font-size: 1.25rem;
+  color: #111;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.offer-card__btn {
+  display: inline-block;
+  background-color: #ff7b4d;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Nút điều hướng */
+.home__offers-prev,
+.home__offers-next {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  transition: background 0.2s;
+}
+
+.home__offers-prev:hover,
+.home__offers-next:hover {
+  background: rgba(244, 67, 54, 0.8);
+}
+
+.home__offers-prev {
+  left: 10px;
+}
+
+.home__offers-next {
+  right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .offer-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+
+  .offer-card__image img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .offer-card {
+    flex: 0 0 100%;
+  }
+
+  .offer-card__image img {
+    height: 180px;
+  }
+}

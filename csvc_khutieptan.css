@@ -1,0 +1,177 @@
+/* --- CSS RIÊNG CHO TRANG KHU TIẾP TÂN (MENU) --- */
+
+.reception-menu-page {
+    /* Đảm bảo style nền tối đồng bộ */
+    background-color: #1a1a1a;
+    color: #fff;
+    padding-bottom: 60px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 20px 0 30px;
+}
+
+.breadcrumb a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: #ff8c4a;
+}
+
+/* Hero Section cho trang Menu */
+.menu-hero {
+    /* Điều chỉnh nhẹ so với fac-hero để phù hợp hơn với trang con */
+    padding: 60px 0 30px;
+    margin-bottom: 0; /* Loại bỏ margin-bottom vì có breadcrumb và nội dung ngay sau đó */
+    background-size: 100% auto; /* Tùy chỉnh ảnh nền cho phù hợp hơn */
+}
+
+/* Tiêu đề Menu chính */
+.menu-title {
+    color: #ff8c4a; /* Tiêu đề menu chuyển sang trắng */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.menu-note {
+    color: #a29f9d; /* Ghi chú màu cam */
+    font-size: 1rem;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+/* Tiêu đề danh mục (Đồ ăn, Nước uống, Dụng cụ) */
+.menu-category-heading {
+    color: #ff8c4a; /* Màu cam chủ đạo */
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding-left: 15px; /* Đẩy vào một chút để phân biệt */
+    border-left: 4px solid #ff8c4a;
+    font-weight: 700;
+}
+
+/* Grid 5 cột cho Menu */
+.grid-5 {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(5, 1fr); /* 5 cột */
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .grid-5 {
+        grid-template-columns: repeat(4, 1fr); /* 4 cột trên màn hình nhỏ hơn */
+    }
+}
+
+@media (max-width: 992px) {
+    .grid-5 {
+        grid-template-columns: repeat(3, 1fr); /* 3 cột trên tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-5 {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột trên điện thoại */
+    }
+}
+
+/* Style cho từng mục trong Menu */
+.menu-item {
+    background: #000;
+    border: 1px solid #333;
+    padding: 10px; /* Giảm padding một chút */
+    text-align: center;
+    border-radius: 4px; /* Giảm border-radius */
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Dùng lại style cơ bản của .grid-item nhưng tinh chỉnh */
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+    border-color: #ff8c4a;
+    box-shadow: 0 5px 15px rgba(255, 140, 74, 0.2);
+}
+
+.menu-item .img-box {
+    height: 150px; /* Chiều cao ảnh cố định */
+    margin-bottom: 10px;
+    border: none; /* Bỏ viền cam quanh ảnh */
+    border-radius: 4px;
+    background-color: #333; /* Màu nền cho placeholder */
+}
+
+.item-name {
+    color: #ff8c4a;
+    font-size: 1.0rem;
+    margin: 5px 0 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.item-desc {
+    font-size: 0.85rem;
+    color: #ccc;
+    height: 35px; /* Giới hạn chiều cao cho mô tả */
+    overflow: hidden;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.item-price {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 800;
+    background-color: #aa1013; /* Màu đỏ nổi bật cho giá */
+    padding: 5px 0;
+    border-radius: 4px;
+}
+
+.item-price.price-free {
+    background-color: #0e8c0e; /* Màu xanh cho FREE */
+}
+
+
+/* Tab navigation riêng cho trang Menu (để cuộn) */
+.menu-tabs-nav {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.menu-tabs-nav .tab-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    /* Sử dụng lại style .tab-btn từ cosovatchat_body.css */
+}
+
+/* =========================================
+           3. BREADCRUMB (ĐƯỜNG DẪN)
+           ========================================= */
+    .breadcrumb {
+      color: #888;
+      font-size: 0.9rem;
+      margin: 20px 0 30px;
+    }
+
+    .breadcrumb a:hover {
+      color: #ff8c4a;
+    }
+
+    .breadcrumb span {
+      color: #e0e0e0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }

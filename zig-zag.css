@@ -1,0 +1,95 @@
+/* DANH SÁCH BLOCK */
+.csvc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;       /* khoảng cách giữa các block */
+  padding: 0 20px;
+}
+
+/* Mỗi block */
+.csvc-item {
+  display: flex;
+  align-items: flex-start;     /* căn top */
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng hover: nổi nhẹ 
+.csvc-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+  */
+
+/* Zig-zag cho block 2 */
+.csvc-item.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Hình ảnh */
+.csvc-img img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* NỘI DUNG */
+.csvc-content {
+  max-width: 480px;
+  margin-top: 10px;
+}
+
+.csvc-content h3 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.csvc-content p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Hover nhẹ hình */
+.csvc-img img:hover {
+  transform: scale(1.03);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .csvc-item {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .csvc-item,
+  .csvc-item.reverse {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .csvc-content {
+    margin-top: 15px;
+    max-width: 90%;
+  }
+
+  .csvc-img img {
+    max-width: 100%;
+    max-height: 220px;
+  }
+}

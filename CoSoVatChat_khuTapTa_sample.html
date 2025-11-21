@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYM PRO - Tập tạ</title>
+
+  <link rel="stylesheet" href="co-forme/assets/css/sample/header_sample.css">
+  <link rel="stylesheet" href="co-forme/assets/css/sample/style_sample.css">
+  <link rel="stylesheet" href="co-forme/assets/css/sample/footer_sample.css">
+  <link rel="stylesheet" href="co-forme/assets/css/sample/cosovatchat_body.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* =========================================
+           1. CORE STYLES (STYLE CƠ BẢN)
+           ========================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fefefe;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* --- DARK THEME (Dùng cho trang này) --- */
+    body.page-dark-theme {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    /* =========================================
+           2. HERO SECTION & HEADINGS
+           ========================================= */
+    .fac-hero {
+      position: relative;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      padding: 100px 0 60px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .fac-hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    .fac-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-title {
+      color: #ff8c4a;
+      font-size: 3rem;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .hero-desc {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      color: #ff8c4a;
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* =========================================
+           3. BREADCRUMB (ĐƯỜNG DẪN)
+           ========================================= */
+    .breadcrumb {
+      color: #888;
+      font-size: 0.9rem;
+      margin: 20px 0 30px;
+    }
+
+    .breadcrumb a:hover {
+      color: #ff8c4a;
+    }
+
+    .breadcrumb span {
+      color: #e0e0e0;
+    }
+
+    /* =========================================
+           4. GRID SYSTEM & CARD DESIGN
+           ========================================= */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* ITEM CARD */
+    .grid-item {
+      background: #000;
+      border: 1px solid #333;
+      padding: 15px;
+      border-radius: 8px;
+      transition: transform 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-5px);
+      border-color: #ff8c4a;
+    }
+
+    .img-box {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      border: 1px solid #444;
+      border-radius: 4px;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .grid-item:hover .img-box img {
+      transform: scale(1.1);
+    }
+
+    .grid-item h3 {
+      color: #ff8c4a;
+      font-size: 1.2rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .grid-item p {
+      color: #e0e0e0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      /* Giới hạn số dòng mô tả để thẻ đều nhau */
+      min-height: 45px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* CARD FOOTER (Share & Time) */
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #333;
+    }
+
+    .read-time {
+      font-size: 0.85rem;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-share {
+      background: #333;
+      color: #ccc;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .btn-share:hover {
+      background: #ff8c4a;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo_header">GYM<span>COFORME</span></div>
+    <nav class="navbar_header">
+      <ul>
+        <li><a href="co-forme/html/pages/DichVu.html">Dịch vụ</a></li>
+        <li><a href="co-forme/html/pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+        <li><a href="co-forme/html/pages/GoiTap.html">Gói tập</a></li>
+        <li><a href="co-forme/html/pages/TinTuc.html">Tin tức</a></li>
+        <li><a href="co-forme/html/pages/KhuyenMai.html">Khuyến mãi</a></li>
+        <li><a href="co-forme/html/pages/DangKy.html" class="button-primary-nav">Đăng ký ngay</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="facilities-page">
+
+    <section class="fac-hero" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');">
+      <div class="overlay"></div>
+      <div class="container fac-hero-content">
+        <h1 class="page-title">Khu Tập Tạ</h1>
+        <p class="hero-desc">
+          Hệ thống máy móc chuẩn quốc tế, đa dạng các mức tạ phù hợp cho cả người mới bắt đầu và vận động viên chuyên nghiệp.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#">Cơ sở vật chất</a> / <a href="#">Khu tập tạ</a> / <span>Các máy tập tạ</span>
+      </div>
+
+      <div class="section-heading">
+        <h2>Các máy tập tạ</h2>
+      </div>
+
+      <div id="machine-list" class="grid-3">
+        
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=1470&auto=format&fit=crop" alt="Máy Ép Ngực (Chest Press)">
+          </div>
+          <h3>Máy Ép Ngực (Chest Press)</h3>
+          <p>Tác động trực tiếp vào cơ ngực giữa, hỗ trợ form chuẩn và an toàn tuyệt đối.</p>
+          <div class="card-footer">
+            <div class="read-time">
+              <i class="fa-regular fa-clock"></i> 3 phút đọc
+            </div>
+            <button class="btn-share" onclick="shareItem('Máy Ép Ngực (Chest Press)')">
+              Nút share
+            </button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?q=80&w=1470&auto=format&fit=crop" alt="Máy Đạp Đùi (Leg Press)">
+          </div>
+          <h3>Máy Đạp Đùi (Leg Press)</h3>
+          <p>Bài tập chân kinh điển, giúp phát triển cơ đùi trước và mông đùi hiệu quả.</p>
+          <div class="card-footer">
+            <div class="read-time">
+              <i class="fa-regular fa-clock"></i> 5 phút đọc
+            </div>
+            <button class="btn-share" onclick="shareItem('Máy Đạp Đùi (Leg Press)')">
+              Nút share
+            </button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=1470&auto=format&fit=crop" alt="Giàn Tạ Đa Năng (Cable)">
+          </div>
+          <h3>Giàn Tạ Đa Năng (Cable)</h3>
+          <p>Linh hoạt với hơn 20 bài tập khác nhau: tay, vai, lưng, xô chỉ trên một máy.</p>
+          <div class="card-footer">
+            <div class="read-time">
+              <i class="fa-regular fa-clock"></i> 4 phút đọc
+            </div>
+            <button class="btn-share" onclick="shareItem('Giàn Tạ Đa Năng (Cable)')">
+              Nút share
+            </button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop" alt="Khu Vực Tạ Đơn (Dumbbells)">
+          </div>
+          <h3>Khu Vực Tạ Đơn (Dumbbells)</h3>
+          <p>Đầy đủ các mức tạ từ 2kg đến 50kg, tay cầm bọc cao su chống trượt cao cấp.</p>
+          <div class="card-footer">
+            <div class="read-time">
+              <i class="fa-regular fa-clock"></i> 2 phút đọc
+            </div>
+            <button class="btn-share" onclick="shareItem('Khu Vực Tạ Đơn (Dumbbells)')">
+              Nút share
+            </button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1470&auto=format&fit=crop" alt="Máy Smith (Smith Machine)">
+          </div>
+          <h3>Máy Smith (Smith Machine)</h3>
+          <p>Hỗ trợ Squat và Bench Press an toàn khi tập luyện một mình không có người đỡ.</p>
+          <div class="card-footer">
+            <div class="read-time">
+              <i class="fa-regular fa-clock"></i> 6 phút đọc
+            </div>
+            <button class="btn-share" onclick="shareItem('Máy Smith (Smith Machine)')">
+              Nút share
+            </button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1637666062717-8c1818c2863f?q=80&w=1470&auto=format&fit=crop" alt="Máy Kéo Xô (Lat Pulldown)">
+          </div>
+          <h3>Máy Kéo Xô (Lat Pulldown)</h3>
+          <p>Xây dựng cơ lưng chữ V hoàn hảo, chuyển động mượt mà với ròng rọc đôi.</p>
+          <div class="card-footer">
+            <div class="read-time">
+              <i class="fa-regular fa-clock"></i> 3 phút đọc
+            </div>
+            <button class="btn-share" onclick="shareItem('Máy Kéo Xô (Lat Pulldown)')">
+              Nút share
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="height: 80px;"></div>
+    </div>
+
+        <!--Form đăng ký-->
+    <section class="formTuVan" id="form-dang-ky">
+      <div class="consultation-layout">
+        <div class="form-side" id="modern-consultation-form">
+          <h3 class="form-title-new">Đăng ký tư vấn</h3>
+          <form id="consultationForm">
+            <div class="field-row"> <input type="text" id="fullname" placeholder="Họ và tên" required
+                class="input-full"> </div>
+            <div class="field-row"> <input type="tel" id="phone" placeholder="Số điện thoại" required
+                class="input-full"> </div>
+            <div class="field-row"> <input type="text" id="zalo" placeholder="Số Zalo (Nếu có)" class="input-full">
+            </div>
+            <div class="field-row field-split"> <input type="number" id="height" placeholder="Chiều cao (cm)" required>
+              <input type="number" id="weight" placeholder="Cân nặng (Kg)" required> </div>
+            <div class="field-row field-bmi"> <input type="text" id="bmi" placeholder="Chỉ số BMI (Nếu có)"> <button
+                type="button" id="calculateBmiBtn" class="btn-calculate-bmi">Tính BMI</button> </div>
+            <div class="form-buttons form-single-button"> <button type="submit" class="btn-submit">Đăng ký tư
+                vấn</button> </div>
+          </form>
+        </div>
+        <div class="image-side"> <img src="/co-forme/assets/img/CoSoVatChat/DoAn-DungCu.png"
+            alt="Hình ảnh tư vấn sức khỏe"> </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+
+      <div class="footer__left">
+        <div class="logo_header">GYM<span>COFORME</span></div>
+        <p class="footer__desc">
+          GymX – Nơi khởi đầu hành trình chinh phục sức mạnh và sức khỏe bền vững.
+          Hãy tập luyện, thay đổi và tỏa sáng cùng chúng tôi 💪
+        </p>
+        <br>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">💪 Fanpage Cô Forme</a></li>
+          <li><a href="pages/GoiTap.html">💪 Cô Forme channel</a></li>
+          <li><a href="pages/CoSoVatChat.html">💪 @co_forme_vn</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__center">
+        <h3 class="footer__title">Thông tin</h3>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">Dịch vụ</a></li>
+          <li><a href="pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+          <li><a href="pages/GoiTap.html">Gói tập</a></li>
+          <li><a href="pages/TinTuc.html">Tin tức</a></li>
+          <li><a href="pages/KhuyenMai.html">Khuyến mãi</a></li>
+          <li><a href="pages/DangKy.html">Đăng ký ngay</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__right">
+        <h3 class="footer__title">Liên hệ</h3>
+        <ul class="footer__contact">
+          <li><strong>Địa chỉ:</strong> 123 Đường Fitness, Q.1, TP.HCM</li>
+          <li><strong>Hotline:</strong> 0909 999 999</li>
+          <li><strong>Email:</strong> support@gymx.vn</li>
+        </ul>
+        <div class="footer__map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.469975540108!2d106.700423!3d10.776888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f480d3dfd89%3A0xabc!2sDistrict%201!5e0!3m2!1sen!2s!4v123456789" width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2025 GymX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Hàm xử lý nút Share
+    // Hàm này được gọi khi bấm nút "Nút share" trên HTML
+    function shareItem(itemName) {
+      alert(`Đã sao chép liên kết của: ${itemName}`);
+    }
+  </script>
+
+</body>
+
+</html>

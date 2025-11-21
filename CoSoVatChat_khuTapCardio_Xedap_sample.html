@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM PRO - Tập Cardio</title>
+
+    <link rel="stylesheet" href="co-forme/assets/css/sample/header_sample.css">
+    <link rel="stylesheet" href="co-forme/assets/css/sample/style_sample.css">
+    <link rel="stylesheet" href="co-forme/assets/css/sample/footer_sample.css">
+    <link rel="stylesheet" href="co-forme/assets/css/sample/cosovatchat_body.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. CẤU HÌNH CHUNG
+           ========================================= */
+        :root {
+            --primary-color: #ff8c4a;
+            --bg-dark: #1a1a1a;
+            --bg-card: #000;
+            --text-light: #fff;
+            --text-gray: #e0e0e0;
+            --border-color: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text-light); background-color: var(--bg-dark); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* =========================================
+           2. HERO SECTION
+           ========================================= */
+        .fac-hero {
+            position: relative;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding: 100px 0 60px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .fac-hero .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7); z-index: 1;
+        }
+        .fac-hero-content { position: relative; z-index: 2; }
+        .page-title { color: var(--primary-color); font-size: 3rem; text-transform: uppercase; margin-bottom: 20px; font-weight: 800; }
+        .hero-desc { max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-gray); }
+        @media (max-width: 768px) { .page-title { font-size: 2rem; } }
+
+        /* =========================================
+           3. BREADCRUMB & HEADINGS
+           ========================================= */
+        .breadcrumb { color: #888; font-size: 0.9rem; margin: 20px 0 30px; }
+        .breadcrumb a:hover { color: var(--primary-color); }
+        .machine-main-title {
+            text-align: center; font-size: 2.5rem; font-weight: 800;
+            margin-bottom: 50px; text-transform: uppercase; color: var(--text-light);
+        }
+        @media (max-width: 768px) { .machine-main-title { font-size: 1.8rem; } }
+
+        /* =========================================
+           4. INTRO
+           ========================================= */
+        .section-intro { display: flex; gap: 40px; margin-bottom: 80px; }
+        .intro-text { flex: 1; }
+        .intro-text h3 {
+            font-size: 1.8rem; margin-bottom: 20px; color: var(--text-light);
+            border-bottom: 3px solid var(--primary-color); display: inline-block;
+        }
+        .intro-text p { color: #ccc; margin-bottom: 15px; text-align: justify; }
+        .intro-images { flex: 1; display: flex; gap: 15px; }
+        .intro-img-box {
+            flex: 1; height: 300px; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden;
+        }
+        .intro-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* =========================================
+           5. BENEFITS (CÔNG DỤNG)
+           ========================================= */
+        .section-benefits {
+            display: flex; gap: 40px; margin-bottom: 80px; align-items: stretch;
+        }
+        .benefit-img-large {
+            flex: 1; height: auto; min-height: 350px;
+            background: var(--bg-card); border-radius: 8px; overflow: hidden;
+            border: 1px solid var(--border-color); display: flex;
+        }
+        .benefit-img-large img { width: 100%; height: 100%; object-fit: cover; }
+        .benefit-content {
+            flex: 1; text-align: right; display: flex; flex-direction: column; justify-content: center;
+        }
+        .benefit-content h3 {
+            font-size: 1.8rem; margin-bottom: 20px; color: var(--text-light);
+            border-bottom: 3px solid var(--primary-color); display: inline-block; align-self: flex-end;
+        }
+        .benefit-content ul { list-style: none; padding: 0; }
+        .benefit-content ul li {
+            display: flex; align-items: center; justify-content: flex-end;
+            gap: 10px; margin-bottom: 12px; color: var(--text-gray);
+        }
+        .benefit-content ul li i { color: var(--primary-color); flex-shrink: 0; }
+        .benefit-quote {
+            margin-top: 25px; padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-right: 4px solid var(--primary-color);
+            border-radius: 8px 0 0 8px; color: var(--text-light);
+            font-style: italic; font-weight: 600; text-align: right;
+        }
+
+        /* =========================================
+           6. SECTION MEDIA & TIPS (ĐÃ CHỈNH SỬA KHOẢNG CÁCH & SIZE)
+           ========================================= */
+        .section-media {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 80px;
+            align-items: stretch;
+        }
+
+        .media-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-title {
+            font-size: 1.3rem; margin-bottom: 15px; color: var(--text-light);
+            font-weight: 700; border-left: 4px solid var(--primary-color); padding-left: 10px;
+        }
+
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+            border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card);
+        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* --- CSS SỬA LẠI CHO TIPS BOX --- */
+        .tips-box {
+            background: #222; border-radius: 8px; 
+            padding: 25px 20px; /* Tăng padding trên dưới chút cho thoáng */
+            border: 1px solid var(--border-color);
+            height: 100%; /* Bắt buộc cao bằng Video */
+            display: flex; 
+            flex-direction: column;
+        }
+
+        .tips-list { 
+            list-style: none; 
+            width: 100%;
+            flex: 1; /* Chiếm hết không gian còn lại */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Tự động chia đều khoảng cách giữa 3 tips */
+        }
+
+        .tips-list li {
+            display: flex; gap: 15px; 
+            /* Bỏ margin-bottom cứng, để space-between tự xử lý */
+            margin: 0; 
+            /* Border mờ hơn chút */
+            border-bottom: 1px dashed #444; 
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+        /* Item đầu tiên không cần padding top */
+        .tips-list li:first-child { padding-top: 0; }
+        /* Item cuối cùng bỏ border và padding bottom */
+        .tips-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .tips-img-thumb {
+            /* Giảm size hình xuống còn 65px cho cân đối */
+            width: 65px; height: 65px; 
+            border-radius: 6px; overflow: hidden; flex-shrink: 0;
+        }
+        .tips-img-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        .tips-content h5 { color: var(--primary-color); font-size: 0.95rem; margin-bottom: 4px; font-weight: 700; }
+        .tips-content p { font-size: 0.85rem; color: #ccc; line-height: 1.4; margin: 0; }
+
+        /* =========================================
+           7. RESPONSIVE
+           ========================================= */
+        @media (max-width: 768px) {
+            .section-intro, .section-media, .consultation-layout { flex-direction: column; }
+            
+            /* Benefits */
+            .section-benefits { flex-direction: column-reverse; }
+            .benefit-img-large { min-height: 250px; }
+            .benefit-content, .benefit-content h3 { text-align: left; align-self: flex-start; }
+            .benefit-content ul li { justify-content: flex-start; text-align: left; flex-direction: row-reverse; }
+            .benefit-content ul li i { margin-left: 0; margin-right: 10px; }
+            .benefit-quote { text-align: left; border-right: none; border-left: 4px solid var(--primary-color); border-radius: 0 8px 8px 0; }
+
+            /* Media */
+            .tips-box { height: auto; display: block; }
+            .tips-list { display: block; } /* Mobile thì không cần space-between */
+            .tips-list li { margin-bottom: 15px; display: flex; padding: 10px 0; }
+        }
+
+        /* =========================================
+           8. XEM THÊM & FORM
+           ========================================= */
+        .see-more-section { margin-bottom: 80px; }
+        .see-more-title {
+            font-size: 1.5rem; margin-bottom: 30px; color: var(--text-light);
+            border-left: 5px solid var(--primary-color); padding-left: 15px;
+            text-transform: uppercase; font-weight: 700;
+        }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        @media (max-width: 992px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid-3 { grid-template-columns: 1fr; } }
+        
+        .sm-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; transition: 0.3s; display: block; }
+        .sm-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .sm-img-box { width: 100%; height: 200px; overflow: hidden; margin-bottom: 15px; border: 1px solid #444; border-radius: 4px; }
+        .sm-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .sm-card:hover .sm-img-box img { transform: scale(1.1); }
+        .sm-card h4 { color: var(--text-gray); font-size: 1.1rem; margin: 0; text-align: center; font-weight: 600; }
+        .sm-card:hover h4 { color: var(--primary-color); }
+
+        /* Form */
+        .formTuVan { margin-bottom: 80px; background: #222; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); }
+        .consultation-layout { display: flex; }
+        .form-side { flex: 1; padding: 40px; }
+        .image-side { flex: 1; position: relative; min-height: 300px; }
+        .image-side img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+        .form-title-new { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 25px; text-transform: uppercase; font-weight: 700; text-align: center; }
+        .field-row { margin-bottom: 15px; display: flex; gap: 15px; }
+        .input-full, input { width: 100%; padding: 12px; background: #333; border: 1px solid #444; border-radius: 6px; color: #fff; outline: none; }
+        .input-full:focus, input:focus { border-color: var(--primary-color); }
+        .field-split { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn-submit { width: 100%; padding: 15px; background: var(--primary-color); color: #000; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; }
+        .btn-calculate-bmi { background: #444; color: #fff; border: none; padding: 0 20px; border-radius: 6px; cursor: pointer; white-space: nowrap; }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo_header">GYM<span>COFORME</span></div>
+        <nav class="navbar_header">
+            <ul>
+                <li><a href="co-forme/html/pages/DichVu.html">Dịch vụ</a></li>
+                <li><a href="co-forme/html/pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+                <li><a href="co-forme/html/pages/GoiTap.html">Gói tập</a></li>
+                <li><a href="co-forme/html/pages/TinTuc.html">Tin tức</a></li>
+                <li><a href="co-forme/html/pages/KhuyenMai.html">Khuyến mãi</a></li>
+                <li><a href="co-forme/html/pages/DangKy.html" class="button-primary-nav">Đăng ký ngay</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="facilities-page">
+        <section class="fac-hero" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');">
+            <div class="overlay"></div>
+            <div class="container fac-hero-content">
+                <h1 class="page-title">KHU TẬP CARDIO</h1>
+                <p class="hero-desc">Nâng cao thể lực và đốt cháy năng lượng hiệu quả cùng hệ thống máy tập hiện đại.</p>
+            </div>
+        </section>
+
+        <main class="container">
+            <div class="breadcrumb">
+                <a href="#">Cơ sở vật chất</a> / <a href="#">Khu cardio</a> / <span>Xe Đạp Tập</span>
+            </div>
+
+            <h2 class="machine-main-title">Xe Đạp Tập (Stationary Bike)</h2>
+
+            <div class="section-intro">
+                <div class="intro-text">
+                    <h3>Giới thiệu thiết bị</h3>
+                    <p>Xe đạp tập Cardio cao cấp với thiết kế công thái học giúp bảo vệ cột sống. Giải pháp tuyệt vời để đốt cháy mỡ thừa vùng thân dưới.</p>
+                    <p>Sản phẩm được nhập khẩu trực tiếp từ Technogym (Ý), vận hành êm ái, màn hình LCD hiển thị đầy đủ thông số.</p>
+                </div>
+                <div class="intro-images">
+                    <div class="intro-img-box"><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop" alt="Xe 1"></div>
+                    <div class="intro-img-box"><img src="https://images.unsplash.com/photo-1596357395217-80de13130e92?q=80&w=600&auto=format&fit=crop" alt="Xe 2"></div>
+                </div>
+            </div>
+
+            <div class="section-benefits">
+                <div class="benefit-img-large">
+                    <img src="https://images.unsplash.com/photo-1517931524326-bdd55a541177?q=80&w=800&auto=format&fit=crop" alt="Lợi ích">
+                </div>
+                <div class="benefit-content">
+                    <h3>Công dụng & Lợi ích</h3>
+                    <ul>
+                        <li>Đốt cháy 500-800 calo/giờ. <i class="fa-solid fa-check"></i></li>
+                        <li>Săn chắc cơ đùi và bắp chân. <i class="fa-solid fa-check"></i></li>
+                        <li>Tăng cường sức bền tim mạch. <i class="fa-solid fa-check"></i></li>
+                        <li>Giảm thiểu rủi ro chấn thương. <i class="fa-solid fa-check"></i></li>
+                    </ul>
+                    <div class="benefit-quote">
+                        <i class="fa-solid fa-quote-right" style="color: #ff8c4a; margin-bottom: 5px;"></i><br>
+                        Chỉ cần 30 phút tập luyện mỗi ngày, bạn sẽ thấy sự cải thiện rõ rệt về vóc dáng và thể lực.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-media">
+                <div class="media-col">
+                    <div class="media-title">Video Hướng Dẫn Tập Luyện</div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/gKgBkyhX0Gk" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="media-col">
+                    <div class="media-title">Các Tips Tập Hiệu Quả</div>
+                    <div class="tips-box">
+                        <ul class="tips-list">
+                            <li>
+                                <div class="tips-img-thumb"><img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=200&auto=format&fit=crop" alt="Yên xe"></div>
+                                <div class="tips-content">
+                                    <h5>Điều chỉnh yên xe</h5>
+                                    <p>Yên xe phải ngang tầm hông khi đứng cạnh. Chân không duỗi thẳng hoàn toàn khi đạp.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tips-img-thumb"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=200&auto=format&fit=crop" alt="Lưng"></div>
+                                <div class="tips-content">
+                                    <h5>Tư thế lưng</h5>
+                                    <p>Giữ lưng thẳng tự nhiên, không gồng vai. Trọng tâm dồn vào hông.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tips-img-thumb"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=200&auto=format&fit=crop" alt="Bụng"></div>
+                                <div class="tips-content">
+                                    <h5>Siết cơ bụng</h5>
+                                    <p>Luôn siết nhẹ cơ bụng để hỗ trợ lưng dưới và đốt mỡ vòng 2.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="see-more-section">
+                <h4 class="see-more-title">Khám phá thêm thiết bị khác</h4>
+                <div class="grid-3">
+                    <a href="#" class="sm-card">
+                        <div class="sm-img-box"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=600" alt="Chạy bộ"></div>
+                        <h4>Máy Chạy Bộ (Treadmill)</h4>
+                    </a>
+                    <a href="#" class="sm-card">
+                        <div class="sm-img-box"><img src="https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?q=80&w=600" alt="Leg Press"></div>
+                        <h4>Máy Đạp Đùi (Leg Press)</h4>
+                    </a>
+                    <a href="#" class="sm-card">
+                        <div class="sm-img-box"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600" alt="Rowing"></div>
+                        <h4>Máy Chèo Thuyền (Rowing)</h4>
+                    </a>
+                </div>
+            </div>
+<!--Form đăng ký-->
+    
+      <div class="consultation-layout">
+        <div class="form-side" id="modern-consultation-form">
+          <h3 class="form-title-new">Đăng ký tư vấn</h3>
+          <form id="consultationForm">
+            <div class="field-row"> <input type="text" id="fullname" placeholder="Họ và tên" required
+                class="input-full"> </div>
+            <div class="field-row"> <input type="tel" id="phone" placeholder="Số điện thoại" required
+                class="input-full"> </div>
+            <div class="field-row"> <input type="text" id="zalo" placeholder="Số Zalo (Nếu có)" class="input-full">
+            </div>
+            <div class="field-row field-split"> <input type="number" id="height" placeholder="Chiều cao (cm)" required>
+              <input type="number" id="weight" placeholder="Cân nặng (Kg)" required> </div>
+            <div class="field-row field-bmi"> <input type="text" id="bmi" placeholder="Chỉ số BMI (Nếu có)"> <button
+                type="button" id="calculateBmiBtn" class="btn-calculate-bmi">Tính BMI</button> </div>
+            <div class="form-buttons form-single-button"> <button type="submit" class="btn-submit">Đăng ký tư
+                vấn</button> </div>
+          </form>
+        </div>
+        <div class="image-side"> <img src="/co-forme/assets/img/CoSoVatChat/DoAn-DungCu.png"
+            alt="Hình ảnh tư vấn sức khỏe"> </div>
+      </div>
+                  
+        </main>
+ 
+
+    
+
+   
+
+  <!--footer-->
+  <footer class="footer">
+    <div class="container footer__container">
+
+      <!-- KHU VỰC TRÁI: LOGO + MÔ TẢ -->
+      <div class="footer__left">
+        <div class="logo_header">GYM<span>COFORME</span></div>
+        <p class="footer__desc">
+          GymX – Nơi khởi đầu hành trình chinh phục sức mạnh và sức khỏe bền vững.
+          Hãy tập luyện, thay đổi và tỏa sáng cùng chúng tôi 💪
+        </p>
+        <br>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">💪 Fanpage Cô Forme</a></li>
+          <li><a href="pages/GoiTap.html">💪 Cô Forme channel</a></li>
+          <li><a href="pages/CoSoVatChat.html">💪 @co_forme_vn</a></li>
+        </ul>
+      </div>
+
+      <!-- KHU VỰC GIỮA: MENU -->
+      <div class="footer__center">
+        <h3 class="footer__title">Thông tin</h3>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">Dịch vụ</a></li>
+          <li><a href="pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+          <li><a href="pages/GoiTap.html">Gói tập</a></li>
+          <li><a href="pages/TinTuc.html">Tin tức</a></li>
+          <li><a href="pages/KhuyenMai.html">Khuyến mãi</a></li>
+          <li><a href="pages/DangKy.html">Đăng ký ngay</a></li>
+        </ul>
+      </div>
+
+      <!-- KHU VỰC PHẢI: LIÊN HỆ + MAP -->
+      <div class="footer__right">
+        <h3 class="footer__title">Liên hệ</h3>
+        <ul class="footer__contact">
+          <li><strong>Địa chỉ:</strong> 123 Đường Fitness, Q.1, TP.HCM</li>
+          <li><strong>Hotline:</strong> 0909 999 999</li>
+          <li><strong>Email:</strong> support@gymx.vn</li>
+        </ul>
+        <div class="footer__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.469975540108!2d106.700423!3d10.776888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f480d3dfd89%3A0xabc!2sDistrict%201!5e0!3m2!1sen!2s!4v123456789"
+            width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer__bottom">
+      <p>© 2025 GymX. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
