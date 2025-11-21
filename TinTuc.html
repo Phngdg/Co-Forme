@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức & Kiến thức - GYM CO FORME</title>
+    
+    <link rel="stylesheet" href="co-forme/assets/css/sample/header_sample.css">
+    <link rel="stylesheet" href="co-forme/assets/css/sample/style_sample.css">
+    <link rel="stylesheet" href="co-forme/assets/css/sample/footer_sample.css">
+    <link rel="stylesheet" href="co-forme/assets/css/sample/cosovatchat_body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <style>
+        /* =========================================
+           1. GLOBAL VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary-color: #ff8c4a;
+            --bg-body: #1a1a1a;
+            --bg-card: #000;
+            --bg-input: #2a2a2a;
+            --text-main: #fff;
+            --text-gray: #a0a0a0;
+            --border-color: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            padding-bottom: 50px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .hidden { display: none !important; }
+
+        /* =========================================
+           2. HEADER
+           ========================================= */
+        .header {
+            background: #000; border-bottom: 1px solid #333;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 40px; position: sticky; top: 0; z-index: 100;
+        }
+        .logo_header { font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; }
+        .logo_header span { color: var(--primary-color); }
+        
+        .navbar_header ul { display: flex; gap: 25px; align-items: center; }
+        .navbar_header a:hover, .navbar_header a.active { color: var(--primary-color); }
+        .button-primary-nav {
+            background: var(--primary-color); color: #000 !important;
+            padding: 8px 20px; border-radius: 4px; font-weight: bold;
+        }
+        .button-primary-nav:hover { background: #fff; }
+
+        @media (max-width: 768px) {
+            .navbar_header { display: none; } 
+            .header { justify-content: center; }
+        }
+
+        /* =========================================
+           3. BANNER SLIDER
+           ========================================= */
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 40px;
+        }
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; transition: opacity 0.5s ease-in-out;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .slide.active { opacity: 1; }
+        .slide img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.6;
+        }
+        .slide-content {
+            position: absolute; text-align: center; z-index: 2;
+        }
+        .slide-content h2 {
+            font-size: 3rem; color: var(--primary-color); text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        .slide-content p { font-size: 1.2rem; margin-top: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.5); color: #fff; border: none;
+            width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
+            font-size: 1.5rem; z-index: 3; transition: 0.3s;
+        }
+        .slider-btn:hover { background: var(--primary-color); color: #000; }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        .slider-dots {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 10px; z-index: 3;
+        }
+        .dot {
+            width: 12px; height: 12px; background: #fff; border-radius: 50%;
+            cursor: pointer; opacity: 0.5; transition: 0.3s;
+        }
+        .dot.active { opacity: 1; background: var(--primary-color); }
+
+        /* =========================================
+           4. LAYOUT GRID
+           ========================================= */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* --- LEFT COLUMN: NEWS LIST --- */
+        .search-bar {
+            display: flex; gap: 10px; margin-bottom: 30px;
+            background: var(--bg-card); padding: 10px; border-radius: 8px; border: 1px solid var(--border-color);
+        }
+        .search-bar input {
+            flex: 1; background: transparent; border: none; color: #fff; font-size: 1rem; outline: none;
+        }
+        .search-bar button {
+            background: var(--primary-color); border: none; width: 40px; height: 40px;
+            border-radius: 4px; cursor: pointer; color: #000;
+        }
+
+        /* === NEWS CARD STYLING === */
+        .news-card {
+            display: flex; background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 8px; overflow: hidden; margin-bottom: 20px;
+            transition: transform 0.3s, border-color 0.3s; cursor: pointer;
+            height: 200px;
+        }
+        
+        /* Hover vào Card */
+        .news-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--primary-color); 
+        }
+
+        /* Hiệu ứng chữ khi Hover */
+        .news-card:hover .news-title {
+            color: var(--primary-color); /* Tiêu đề chuyển sang màu cam */
+        }
+        
+        /* ĐÃ SỬA: Bỏ hiệu ứng chuyển màu trắng cho excerpt để giữ màu xám */
+        .news-card:hover .news-excerpt {
+            color: var(--text-gray); 
+        }
+        
+        .news-thumb { width: 40%; overflow: hidden; }
+        .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .news-card:hover .news-thumb img { transform: scale(1.1); }
+
+        .news-info { padding: 20px; width: 60%; display: flex; flex-direction: column; justify-content: center; }
+        .news-meta { font-size: 0.8rem; color: var(--primary-color); margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
+        
+        .news-title { 
+            font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; line-height: 1.3; 
+            transition: color 0.3s ease; 
+        }
+        
+        .news-excerpt { 
+            font-size: 0.9rem; color: var(--text-gray); 
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; 
+            transition: color 0.3s ease; 
+        }
+
+        /* --- RIGHT COLUMN: SIDEBAR --- */
+        .sidebar-box {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            padding: 20px; border-radius: 8px; margin-bottom: 30px;
+        }
+        .sidebar-title {
+            font-size: 1.2rem; color: var(--primary-color); text-transform: uppercase;
+            font-weight: 700; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;
+        }
+
+        .video-placeholder {
+            width: 100%; aspect-ratio: 16/9; background: #222;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 4px; cursor: pointer; position: relative;
+        }
+        .play-icon {
+            width: 60px; height: 60px; background: rgba(255, 140, 74, 0.8);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #000;
+        }
+
+        .promo-box {
+            background: linear-gradient(135deg, #333, #000);
+            text-align: center; padding: 30px 15px; border: 1px dashed var(--primary-color);
+        }
+        .promo-box h3 { font-size: 1.5rem; color: #fff; margin-bottom: 10px; }
+        .promo-box .highlight { color: var(--primary-color); font-size: 2rem; font-weight: 800; display: block; margin: 10px 0; }
+        .btn-small {
+            background: var(--primary-color); color: #000; padding: 8px 15px;
+            border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block;
+        }
+
+        .related-item { display: flex; gap: 10px; margin-bottom: 15px; cursor: pointer; }
+        .related-thumb { width: 80px; height: 60px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+        .related-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .related-info h4 { font-size: 0.9rem; line-height: 1.3; transition: 0.3s; }
+        .related-item:hover h4 { color: var(--primary-color); }
+
+        /* =========================================
+           5. ARTICLE DETAIL VIEW
+           ========================================= */
+        .detail-header { margin-bottom: 30px; }
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--text-gray); margin-bottom: 20px; cursor: pointer; font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--primary-color); }
+        
+        .article-title { font-size: 2.5rem; line-height: 1.2; margin-bottom: 15px; }
+        .article-meta { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 30px; }
+        
+        .article-content { font-size: 1.1rem; color: #ddd; }
+        .article-content p { margin-bottom: 20px; }
+        .article-content h2 { color: var(--primary-color); font-size: 1.5rem; margin: 30px 0 15px; }
+        .article-content img { width: 100%; border-radius: 8px; margin: 20px 0; }
+        .article-content blockquote {
+            border-left: 4px solid var(--primary-color); padding-left: 20px;
+            font-style: italic; color: #fff; background: #222; padding: 20px; border-radius: 0 8px 8px 0;
+        }
+
+        /* =========================================
+           6. FOOTER
+           ========================================= */
+        .footer { background: #050505; padding: 60px 0 20px; border-top: 1px solid #222; margin-top: 60px; }
+        .footer__container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+        .footer__left, .footer__center, .footer__right { flex: 1; min-width: 250px; }
+        .footer__title { color: #fff; margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; }
+        .footer__menu li, .footer__contact li { margin-bottom: 10px; color: #888; font-size: 0.9rem; }
+        .footer__menu a:hover { color: var(--primary-color); }
+        .footer__bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.8rem; }
+
+        /* =========================================
+           7. RESPONSIVE
+           ========================================= */
+        @media (max-width: 768px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .news-card { flex-direction: column; height: auto; }
+            .news-thumb { width: 100%; height: 200px; }
+            .news-info { width: 100%; }
+            .banner-slider { height: 250px; }
+            .slide-content h2 { font-size: 1.8rem; }
+            .article-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo_header">GYM<span>COFORME</span></div>
+        <nav class="navbar_header">
+            <ul>
+                <li><a href="co-forme/html/pages/DichVu.html">Dịch vụ</a></li>
+                <li><a href="co-forme/html/pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+                <li><a href="co-forme/html/pages/GoiTap.html">Gói tập</a></li>
+                <li><a href="co-forme/html/pages/TinTuc.html">Tin tức</a></li>
+                <li><a href="co-forme/html/pages/KhuyenMai.html">Khuyến mãi</a></li>
+                <li><a href="co-forme/html/pages/DangKy.html" class="button-primary-nav">Đăng ký ngay</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="banner-slider">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop" alt="Gym">
+            <div class="slide-content">
+                <h2>Kiến thức Thể hình</h2>
+                <p>Cập nhật xu hướng tập luyện mới nhất 2025</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1470&auto=format&fit=crop" alt="Yoga">
+            <div class="slide-content">
+                <h2>Sống Khỏe Mỗi Ngày</h2>
+                <p>Dinh dưỡng và bài tập cho cuộc sống cân bằng</p>
+            </div>
+        </div>
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="slider-dots">
+            <div class="dot active" onclick="currentSlide(0)"></div>
+            <div class="dot" onclick="currentSlide(1)"></div>
+        </div>
+    </div>
+
+    <main class="container">
+        
+        <div class="content-grid">
+            
+            <div id="news-feed">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm bài viết..." onkeyup="filterNews()">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+                <div id="article-list">
+                    <div class="news-card" onclick="showDetail(1)">
+                        <div class="news-thumb">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop" alt="Squat">
+                        </div>
+                        <div class="news-info">
+                            <div class="news-meta">Kỹ thuật tập luyện</div>
+                            <h3 class="news-title">5 Lỗi sai thường gặp khi tập Squat khiến bạn đau lưng</h3>
+                            <p class="news-excerpt">Squat là vua của các bài tập chân, nhưng tập sai kỹ thuật không chỉ giảm hiệu quả mà còn gây chấn thương cột sống...</p>
+                        </div>
+                    </div>
+
+                    <div class="news-card" onclick="showDetail(2)">
+                        <div class="news-thumb">
+                            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1453&auto=format&fit=crop" alt="Eat Clean">
+                        </div>
+                        <div class="news-info">
+                            <div class="news-meta">Dinh dưỡng</div>
+                            <h3 class="news-title">Thực đơn Eat Clean 7 ngày giảm mỡ tăng cơ cho dân văn phòng</h3>
+                            <p class="news-excerpt">Không cần cầu kỳ, thực đơn này giúp bạn tiết kiệm thời gian chuẩn bị mà vẫn đảm bảo dinh dưỡng và calo thâm hụt...</p>
+                        </div>
+                    </div>
+
+                    <div class="news-card" onclick="showDetail(3)">
+                        <div class="news-thumb">
+                            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop" alt="Gym Beginner">
+                        </div>
+                        <div class="news-info">
+                            <div class="news-meta">Người mới</div>
+                            <h3 class="news-title">Lịch tập Gym 4 buổi/tuần chuẩn khoa học cho người mới bắt đầu</h3>
+                            <p class="news-excerpt">Chia lịch tập thế nào để cơ bắp phục hồi? Bài viết này sẽ cung cấp giáo án chi tiết trong 1 tháng đầu tiên...</p>
+                        </div>
+                    </div>
+
+                    <div class="news-card" onclick="showDetail(4)">
+                        <div class="news-thumb">
+                            <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop" alt="Cardio">
+                        </div>
+                        <div class="news-info">
+                            <div class="news-meta">Giảm cân</div>
+                            <h3 class="news-title">Cardio hay Tập tạ: Đâu là phương pháp đốt mỡ nhanh nhất?</h3>
+                            <p class="news-excerpt">Nhiều người nghĩ chạy bộ giảm cân nhanh hơn nâng tạ. Sự thật khoa học sẽ khiến bạn bất ngờ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="article-detail" class="hidden">
+                <div class="detail-header">
+                    <div class="btn-back" onclick="hideDetail()">
+                        <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách
+                    </div>
+                    <h1 class="article-title" id="detail-title">Tiêu đề bài viết</h1>
+                    <div class="article-meta">Đăng bởi <strong>Admin</strong> • <span id="detail-date">20/10/2025</span></div>
+                </div>
+
+                <div class="article-content" id="detail-content">
+                    </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="sidebar-box">
+                    <h4 class="sidebar-title">Video Nổi bật</h4>
+                    <div class="video-placeholder">
+                        <img src="https://images.unsplash.com/photo-1574680096141-1cddd32e24f7?q=80&w=1470&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover; opacity:0.6; border-radius:4px;">
+                        <div class="play-icon" style="position:absolute"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <p style="margin-top:10px; font-size:0.9rem; font-weight:bold">Tập Bụng 10 phút mỗi ngày</p>
+                </div>
+
+                <div class="sidebar-box promo-box">
+                    <h3>CHƯƠNG TRÌNH</h3>
+                    <span class="highlight">SALE 50%</span>
+                    <p style="margin-bottom:15px; font-size:0.9rem; color:#ccc">Dành cho hội viên đăng ký mới trong tháng này.</p>
+                    <a href="#" class="btn-small">Đăng ký ngay</a>
+                </div>
+
+                <div class="sidebar-box">
+                    <h4 class="sidebar-title">Bài viết cùng chủ đề</h4>
+                    <div class="related-item" onclick="showDetail(2)">
+                        <div class="related-thumb"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1453&auto=format&fit=crop"></div>
+                        <div class="related-info"><h4>Thực đơn Eat Clean 7 ngày</h4></div>
+                    </div>
+                    <div class="related-item" onclick="showDetail(3)">
+                        <div class="related-thumb"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop"></div>
+                        <div class="related-info"><h4>Lịch tập Gym cho người mới</h4></div>
+                    </div>
+                    <div class="related-item" onclick="showDetail(4)">
+                        <div class="related-thumb"><img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop"></div>
+                        <div class="related-info"><h4>Cardio vs Tập tạ?</h4></div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+      <footer class="footer">
+    <div class="container footer__container">
+
+      <div class="footer__left">
+        <div class="logo_header">GYM<span>COFORME</span></div>
+        <p class="footer__desc">
+          GymX – Nơi khởi đầu hành trình chinh phục sức mạnh và sức khỏe bền vững.
+          Hãy tập luyện, thay đổi và tỏa sáng cùng chúng tôi 💪
+        </p>
+        <br>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">💪 Fanpage Cô Forme</a></li>
+          <li><a href="pages/GoiTap.html">💪 Cô Forme channel</a></li>
+          <li><a href="pages/CoSoVatChat.html">💪 @co_forme_vn</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__center">
+        <h3 class="footer__title">Thông tin</h3>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">Dịch vụ</a></li>
+          <li><a href="pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+          <li><a href="pages/GoiTap.html">Gói tập</a></li>
+          <li><a href="pages/TinTuc.html">Tin tức</a></li>
+          <li><a href="pages/KhuyenMai.html">Khuyến mãi</a></li>
+          <li><a href="pages/DangKy.html">Đăng ký ngay</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__right">
+        <h3 class="footer__title">Liên hệ</h3>
+        <ul class="footer__contact">
+          <li><strong>Địa chỉ:</strong> 123 Đường Fitness, Q.1, TP.HCM</li>
+          <li><strong>Hotline:</strong> 0909 999 999</li>
+          <li><strong>Email:</strong> support@gymx.vn</li>
+        </ul>
+        <div class="footer__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.469975540108!2d106.700423!3d10.776888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f480d3dfd89%3A0xabc!2sDistrict%201!5e0!3m2!1sen!2s!4v123456789"
+            width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2025 GymX. All rights reserved.</p>
+    </div>
+  </footer>
+
+    <script>
+        // --- 1. CAROUSEL LOGIC ---
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove("active");
+                dots[index].classList.remove("active");
+            });
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+
+        function moveSlide(n) {
+            slideIndex += n - 1; 
+            if (slideIndex >= slides.length) slideIndex = -1; 
+            if (slideIndex < -1) slideIndex = slides.length - 2;
+            
+            const current = document.querySelector('.slide.active');
+            current.classList.remove('active');
+            
+            let nextIndex = Array.from(slides).indexOf(current) + n;
+            if (nextIndex >= slides.length) nextIndex = 0;
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+            
+            slides[nextIndex].classList.add('active');
+            
+            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+            dots[nextIndex].classList.add('active');
+        }
+
+        function currentSlide(n) {
+            document.querySelector('.slide.active').classList.remove('active');
+            document.querySelector('.dot.active').classList.remove('active');
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+        }
+
+        showSlides();
+
+
+        // --- 2. SEARCH FILTER LOGIC ---
+        function filterNews() {
+            let input = document.getElementById('searchInput');
+            let filter = input.value.toUpperCase();
+            let cards = document.getElementsByClassName('news-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByClassName("news-title")[0];
+                let txtValue = title.textContent || title.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+
+        // --- 3. DETAIL VIEW LOGIC (DATA MOCKUP) ---
+        const articlesData = {
+            1: {
+                title: "5 Lỗi sai thường gặp khi tập Squat khiến bạn đau lưng",
+                content: `
+                    <p class="lead">Squat là một trong những bài tập cơ bản và hiệu quả nhất để phát triển cơ chân và mông. Tuy nhiên, nếu thực hiện sai kỹ thuật, nó có thể trở thành cơn ác mộng cho cột sống của bạn.</p>
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop">
+                    <h2>1. Cong lưng dưới (Butt Wink)</h2>
+                    <p>Đây là lỗi phổ biến nhất. Khi hạ người xuống sâu, xương chậu bị xoay về phía sau làm mất đường cong tự nhiên của cột sống. Điều này gây áp lực cực lớn lên đĩa đệm.</p>
+                    <blockquote>Lời khuyên: Hãy tập trung gồng chặt cơ bụng (Core) và chỉ xuống sâu đến mức bạn còn giữ được lưng thẳng.</blockquote>
+                    <h2>2. Đầu gối chụm vào trong (Knee Valgus)</h2>
+                    <p>Khi đứng lên, nếu hai đầu gối bạn có xu hướng chụm vào nhau, dây chằng đầu gối sẽ chịu lực rất lớn. Nguyên nhân thường do cơ mông yếu.</p>
+                    <h2>3. Nhấc gót chân</h2>
+                    <p>Lỗi này thường do cổ chân thiếu linh hoạt. Khi gót chân rời sàn, trọng tâm dồn về phía trước gây áp lực lên đầu gối.</p>
+                    <p>Hãy sửa các lỗi này ngay hôm nay để có buổi tập hiệu quả và an toàn nhé!</p>
+                `
+            },
+            2: {
+                title: "Thực đơn Eat Clean 7 ngày giảm mỡ tăng cơ",
+                content: "<p>Nội dung chi tiết về Eat Clean đang được cập nhật...</p>"
+            },
+            3: {
+                title: "Lịch tập Gym 4 buổi/tuần chuẩn khoa học",
+                content: "<p>Nội dung chi tiết về lịch tập đang được cập nhật...</p>"
+            },
+            4: {
+                title: "Cardio hay Tập tạ: Đâu là phương pháp đốt mỡ?",
+                content: "<p>Nội dung so sánh Cardio và Weight Training đang được cập nhật...</p>"
+            }
+        };
+
+        function showDetail(id) {
+            const data = articlesData[id] || articlesData[1];
+            
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-content').innerHTML = data.content;
+
+            document.getElementById('news-feed').classList.add('hidden');
+            document.getElementById('article-detail').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function hideDetail() {
+            document.getElementById('article-detail').classList.add('hidden');
+            document.getElementById('news-feed').classList.remove('hidden');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+    </script>
+
+</body>
+</html>

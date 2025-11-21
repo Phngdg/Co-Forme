@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYM PRO - Tập Cardio</title>
+
+  <link rel="stylesheet" href="co-forme/assets/css/header_sample.css">
+  <link rel="stylesheet" href="co-forme/assets/css/style_sample.css">
+  <link rel="stylesheet" href="co-forme/assets/css/footer_sample.css">
+  <link rel="stylesheet" href="co-forme/assets/css/cosovatchat_body.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* =========================================
+       1. CORE STYLES (STYLE CƠ BẢN)
+       ========================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fefefe;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    body.page-dark-theme {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    /* =========================================
+       2. HERO SECTION
+       ========================================= */
+    .fac-hero {
+      position: relative;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      padding: 100px 0 60px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .fac-hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    .fac-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-title {
+      color: #ff8c4a;
+      font-size: 3rem;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .hero-desc {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      color: #ff8c4a;
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* =========================================
+       3. BREADCRUMB
+       ========================================= */
+    .breadcrumb {
+      color: #888;
+      font-size: 0.9rem;
+      margin: 20px 0 30px;
+    }
+
+    .breadcrumb a:hover {
+      color: #ff8c4a;
+    }
+
+    .breadcrumb span {
+      color: #e0e0e0;
+    }
+
+    /* =========================================
+       4. GRID SYSTEM & CARD
+       ========================================= */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 992px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+    }
+
+    .grid-item {
+      background: #000;
+      border: 1px solid #333;
+      padding: 15px;
+      border-radius: 8px;
+      transition: transform 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-5px);
+      border-color: #ff8c4a;
+    }
+
+    .img-box {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      border: 1px solid #444;
+      border-radius: 4px;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .grid-item:hover .img-box img {
+      transform: scale(1.1);
+    }
+
+    .grid-item h3 {
+      color: #ff8c4a;
+      font-size: 1.2rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .grid-item p {
+      color: #e0e0e0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      min-height: 45px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #333;
+    }
+
+    .read-time {
+      font-size: 0.85rem;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-share {
+      background: #333;
+      color: #ccc;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .btn-share:hover {
+      background: #ff8c4a;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo_header">GYM<span>COFORME</span></div>
+    <nav class="navbar_header">
+      <ul>
+        <li><a href="co-forme/html/pages/DichVu.html">Dịch vụ</a></li>
+        <li><a href="co-forme/html/pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+        <li><a href="co-forme/html/pages/GoiTap.html">Gói tập</a></li>
+        <li><a href="co-forme/html/pages/TinTuc.html">Tin tức</a></li>
+        <li><a href="co-forme/html/pages/KhuyenMai.html">Khuyến mãi</a></li>
+        <li><a href="co-forme/html/pages/DangKy.html" class="button-primary-nav">Đăng ký ngay</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="facilities-page">
+
+    <section class="fac-hero"
+      style="background-image: url('https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1470&auto=format&fit=crop');">
+      <div class="overlay"></div>
+      <div class="container fac-hero-content">
+        <h1 class="page-title">Khu tập Cardio</h1>
+        <p class="hero-desc">
+          Đốt cháy calo hiệu quả với hệ thống máy Cardio tối tân, nâng cao sức bền và bảo vệ tim mạch.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#">Cơ sở vật chất</a> / <a href="#">Khu cardio</a> / <span>Các máy cardio</span>
+      </div>
+
+      <div class="section-heading">
+        <h2>Thiết bị hỗ trợ tập cardio</h2>
+      </div>
+
+      <div id="machine-list" class="grid-3">
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1470&auto=format&fit=crop"
+              alt="Máy Chạy Bộ">
+          </div>
+          <h3>Máy Chạy Bộ (Treadmill)</h3>
+          <p>Hệ thống giảm chấn êm ái, màn hình LED tích hợp đa phương tiện, phù hợp đi bộ và chạy nước rút.</p>
+          <div class="card-footer">
+            <div class="read-time"><i class="fa-regular fa-clock"></i> 5 phút đọc</div>
+            <button class="btn-share" onclick="shareItem('Máy Chạy Bộ')">Nút share</button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop"
+              alt="Xe Đạp Tập">
+          </div>
+          <h3>Xe Đạp Tập (Exercise Bike)</h3>
+          <p>Tác động sâu vào cơ đùi và bắp chân mà không gây áp lực lên khớp gối, phù hợp mọi lứa tuổi.</p>
+          <div class="card-footer">
+            <div class="read-time"><i class="fa-regular fa-clock"></i> 3 phút đọc</div>
+            <button class="btn-share" onclick="shareItem('Xe Đạp Tập')">Nút share</button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop"
+              alt="Máy Trượt Tuyết">
+          </div>
+          <h3>Máy Trượt Tuyết (Elliptical)</h3>
+          <p>Kết hợp vận động tay và chân nhịp nhàng, đốt calo toàn thân hiệu quả gấp đôi chạy bộ thông thường.</p>
+          <div class="card-footer">
+            <div class="read-time"><i class="fa-regular fa-clock"></i> 4 phút đọc</div>
+            <button class="btn-share" onclick="shareItem('Máy Trượt Tuyết')">Nút share</button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=1470&auto=format&fit=crop"
+              alt="Máy Chèo Thuyền">
+          </div>
+          <h3>Máy Chèo Thuyền (Rowing)</h3>
+          <p>Mô phỏng động tác chèo thuyền thực tế, giúp phát triển cơ lưng xô và tăng cường sức bền tim mạch.</p>
+          <div class="card-footer">
+            <div class="read-time"><i class="fa-regular fa-clock"></i> 6 phút đọc</div>
+            <button class="btn-share" onclick="shareItem('Máy Chèo Thuyền')">Nút share</button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?q=80&w=1470&auto=format&fit=crop"
+              alt="Máy Leo Cầu Thang">
+          </div>
+          <h3>Máy Leo Cầu Thang (Climber)</h3>
+          <p>Mô phỏng động tác leo cầu thang vô tận, đốt cháy calo cực nhanh và giúp săn chắc vùng mông đùi.</p>
+          <div class="card-footer">
+            <div class="read-time"><i class="fa-regular fa-clock"></i> 4 phút đọc</div>
+            <button class="btn-share" onclick="shareItem('Máy Leo Cầu Thang')">Nút share</button>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1470&auto=format&fit=crop"
+              alt="Xe Đạp Gió">
+          </div>
+          <h3>Xe Đạp Gió (Air Bike)</h3>
+          <p>Sử dụng sức cản của gió, càng đạp nhanh càng nặng, tuyệt vời cho các bài tập HIIT cường độ cao.</p>
+          <div class="card-footer">
+            <div class="read-time"><i class="fa-regular fa-clock"></i> 3 phút đọc</div>
+            <button class="btn-share" onclick="shareItem('Xe Đạp Gió')">Nút share</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="height: 80px;"></div>
+    </div>
+
+    <!--Form đăng ký-->
+    <section class="formTuVan" id="form-dang-ky">
+      <div class="consultation-layout">
+        <div class="form-side" id="modern-consultation-form">
+          <h3 class="form-title-new">Đăng ký tư vấn</h3>
+          <form id="consultationForm">
+            <div class="field-row"> <input type="text" id="fullname" placeholder="Họ và tên" required
+                class="input-full"> </div>
+            <div class="field-row"> <input type="tel" id="phone" placeholder="Số điện thoại" required
+                class="input-full"> </div>
+            <div class="field-row"> <input type="text" id="zalo" placeholder="Số Zalo (Nếu có)" class="input-full">
+            </div>
+            <div class="field-row field-split"> <input type="number" id="height" placeholder="Chiều cao (cm)" required>
+              <input type="number" id="weight" placeholder="Cân nặng (Kg)" required> </div>
+            <div class="field-row field-bmi"> <input type="text" id="bmi" placeholder="Chỉ số BMI (Nếu có)"> <button
+                type="button" id="calculateBmiBtn" class="btn-calculate-bmi">Tính BMI</button> </div>
+            <div class="form-buttons form-single-button"> <button type="submit" class="btn-submit">Đăng ký tư
+                vấn</button> </div>
+          </form>
+        </div>
+        <div class="image-side"> <img src="/co-forme/assets/img/CoSoVatChat/DoAn-DungCu.png"
+            alt="Hình ảnh tư vấn sức khỏe"> </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__left">
+        <div class="logo_header">GYM<span>COFORME</span></div>
+        <p class="footer__desc">
+          GymX – Nơi khởi đầu hành trình chinh phục sức mạnh và sức khỏe bền vững.
+        </p>
+        <br>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">💪 Fanpage Cô Forme</a></li>
+          <li><a href="pages/GoiTap.html">💪 Cô Forme channel</a></li>
+          <li><a href="pages/CoSoVatChat.html">💪 @co_forme_vn</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__center">
+        <h3 class="footer__title">Thông tin</h3>
+        <ul class="footer__menu">
+          <li><a href="pages/DichVu.html">Dịch vụ</a></li>
+          <li><a href="pages/CoSoVatChat.html">Cơ sở vật chất</a></li>
+          <li><a href="pages/GoiTap.html">Gói tập</a></li>
+          <li><a href="pages/TinTuc.html">Tin tức</a></li>
+          <li><a href="pages/KhuyenMai.html">Khuyến mãi</a></li>
+          <li><a href="pages/DangKy.html">Đăng ký ngay</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__right">
+        <h3 class="footer__title">Liên hệ</h3>
+        <ul class="footer__contact">
+          <li><strong>Địa chỉ:</strong> 123 Đường Fitness, Q.1, TP.HCM</li>
+          <li><strong>Hotline:</strong> 0909 999 999</li>
+          <li><strong>Email:</strong> support@gymx.vn</li>
+        </ul>
+        <div class="footer__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.469975540108!2d106.700423!3d10.776888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f480d3dfd89%3A0xabc!2sDistrict%201!5e0!3m2!1sen!2s!4v123456789"
+            width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 GymX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function shareItem(itemName) {
+      alert(`Đã sao chép liên kết của: ${itemName}`);
+    }
+  </script>
+
+</body>
+
+</html>

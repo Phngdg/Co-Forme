@@ -1,0 +1,260 @@
+/* --- BIẾN CSS ĐÃ CẬP NHẬT THEO YÊU CẦU CAM - TRẮNG - ĐEN --- */
+:root {
+    --primary-color: #ff8c4a;
+    /* Màu Cam nổi bật */
+    --secondary-color: #1a1a1a;
+    /* Màu Đen tuyền */
+    --white-color: #ffffff;
+    /* Màu Trắng */
+    --bg-dark: #212121;
+    /* Nền tối */
+}
+
+/* --- CÁC STYLE KHU VỰC CHUNG --- */
+.facilities-page {
+    background-color: var(--secondary-color);
+    /* Nền tối tổng thể */
+    color: var(--white-color);
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    padding-bottom: 60px;
+}
+
+.fac-hero {
+    /* Đã chỉnh sửa: SỬ DỤNG MÀU CAM LÀM CHỦ ĐẠO */
+}
+
+.page-title {
+    color: var(--primary-color);
+    /* Màu cam chủ đạo */
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+/* TABS NAVIGATION */
+.tab-btn.active {
+    background-color: var(--primary-color);
+    /* Màu cam khi active */
+    color: var(--secondary-color);
+    /* Chữ đen trên nền cam */
+}
+
+/* GRID ITEM */
+.grid-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.img-box {
+    border: 2px solid var(--primary-color);
+    /* Viền cam quanh ảnh */
+}
+
+.grid-item h3 {
+    color: var(--primary-color);
+}
+
+.see-more a:hover {
+    color: var(--primary-color);
+}
+
+/* ---------------------------------------------------- */
+/* --- FORM TƯ VẤN (SỬ DỤNG CÁC ĐỊNH NGHĨA CHO LAYOUT 1/3) --- */
+/* ---------------------------------------------------- */
+/* Loại bỏ class .consult-box và ưu tiên .consultation-layout cho tính nhất quán */
+/*section form đăng ký*/
+.formTuVan{
+    padding: 10px 10px;
+    background-color: ;
+}
+.consultation-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: var(--bg-dark);
+    /* Nền container tối */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Khu vực Form: Chiếm 1/3 màn hình trên Desktop */
+.form-side {
+    flex: 0 0 50%;
+    /* Chiếm chính xác 1/3 (33.333%) */
+    padding: 50px 40px;
+    /* Áp dụng padding lớn hơn từ form cũ */
+    /* Nền form dùng màu đen hoặc nền gradient/solid tối đậm */
+    background: var(--secondary-color);
+    color: var(--white-color);
+    border-radius: 15px;
+    box-sizing: border-box;
+    background: linear-gradient(173deg, rgba(156, 0, 0, 0.05) 39.75%, #AA1013 89.93%);
+
+}
+
+/* Khu vực Hình ảnh: Chiếm 2/3 màn hình trên Desktop */
+.image-side {
+    flex: 1;
+    /* Chiếm phần còn lại (tương đương 66.666%) */
+    display: block;
+}
+
+.image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ------------------- FORM STYLING ------------------- */
+.form-title-new {
+    color: var(--primary-color);
+    /* Tiêu đề cam */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.field-row {
+    margin-bottom: 18px;
+}
+
+.field-split {
+    display: flex;
+    gap: 15px;
+    /* Áp dụng gap lớn hơn */
+}
+
+/* Styling chung cho tất cả input */
+.form-side input[type="text"],
+.form-side input[type="tel"],
+.form-side input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    /* Nền input hơi trong suốt */
+    color: var(--white-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-side input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-side input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: var(--primary-color);
+    /* Focus viền cam */
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 140, 74, 0.5);
+    /* Shadow cam */
+}
+
+.field-split input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Khu vực BMI và nút tính toán */
+.field-bmi {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.field-bmi input {
+    flex-grow: 1;
+}
+
+.btn-calculate-bmi {
+    background: var(--primary-color);
+    /* Nút tính BMI màu cam */
+    color: var(--secondary-color);
+    /* Chữ đen */
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s, transform 0.2s;
+    flex-shrink: 0;
+}
+
+.btn-calculate-bmi:hover {
+    background: #e67737;
+    /* Màu cam đậm hơn */
+    transform: translateY(-1px);
+}
+
+/* Nút Đăng ký tư vấn */
+.form-single-button {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-submit {
+    background: var(--white-color);
+    /* Nút submit màu trắng */
+    color: var(--secondary-color);
+    /* Chữ đen */
+    padding: 15px 30px;
+    /* Tăng padding */
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 300px;
+}
+
+.btn-submit:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* ------------------- MEDIA QUERY (Dành cho Mobile) ------------------- */
+@media (max-width: 768px) {
+
+    /* (Giữ nguyên các thuộc tính responsive đã chỉnh sửa ở trên, đảm bảo form chiếm 100% và ẩn ảnh) */
+    .consultation-layout {
+        flex-direction: column;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .form-side {
+        flex: 0 0 100%;
+        padding: 20px;
+        border-radius: 0;
+    }
+
+    .image-side {
+        display: none;
+    }
+
+    .field-bmi {
+        flex-direction: column;
+    }
+
+    .field-bmi input,
+    .btn-calculate-bmi {
+        flex: 1;
+        width: 100%;
+    }
+}

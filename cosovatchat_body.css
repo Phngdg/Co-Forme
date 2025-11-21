@@ -1,0 +1,419 @@
+/* --- CẤU HÌNH CHUNG CHO TRANG FACILITIES --- */
+.facilities-page {
+  background-color: #1a1a1a; /* Nền tối tổng thể */
+  color: #fff;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  padding-bottom: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* --- HERO SECTION --- */
+.fac-hero {
+  position: relative;
+  background: url("../../assets/img/Banner/Banner 1.png") no-repeat center
+    center/cover;
+  padding: 80px 0 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.fac-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Lớp phủ đen mờ */
+  z-index: 1;
+}
+
+.fac-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.page-title {
+  color: #ff8c4a; /* Màu cam chủ đạo */
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.hero-desc {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* --- TABS NAVIGATION --- */
+.fac-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 8px;
+  display: inline-flex; /* Để background ôm sát buttons */
+}
+
+.tab-btn {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.tab-btn:hover {
+  background-color: #666;
+}
+
+.tab-btn.active {
+  background-color: #ff8c4a; /* Màu cam khi active */
+  color: #000;
+}
+
+.tab-btn.register-tab {
+  background-color: #8d6e63; /* Màu nâu nhạt cho nút form */
+}
+
+.tab-btn.register-tab:hover {
+  background-color: #a1887f;
+}
+
+/* --- CONTENT SECTIONS --- */
+.tab-content {
+  display: none; /* Ẩn mặc định */
+  animation: none;
+  padding: 20px 0;
+}
+.fac-section-content {
+    margin-bottom: 60px; /* Thêm khoảng cách lớn giữa các khu vực */
+    padding-top: 20px; /* Thêm padding trên để cuộn trang đẹp hơn */
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-heading {
+  text-align: center;
+  color: #ff8c4a;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* --- GRID SYSTEMS --- */
+.grid-2,
+.grid-3,
+.grid-4 {
+  display: grid;
+  gap: 30px;
+  justify-content: center;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive Grid */
+@media (max-width: 992px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .fac-tabs {
+    flex-direction: column;
+    width: 100%;
+  }
+  .tab-btn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+/* --- CARD ITEM --- */
+.grid-item {
+  background: #000;
+  border: 1px solid #333;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  border-color: #ff8c4a;
+}
+
+.img-box {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 2px solid #ff8c4a; /* Viền cam quanh ảnh */
+  border-radius: 4px;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-item h3 {
+  color: #ff8c4a;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.see-more {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.see-more a {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.see-more a:hover {
+  color: #ff8c4a;
+}
+
+/* --- FORM SECTION (ĐỎ ĐẬM) --- */
+.formTuVan {
+  padding: 10px 10px;
+  background-color: #1a1a1a;
+  position: relative;
+}
+.consultation-layout {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background-color: var(--bg-dark);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Khu vực Form*/
+.form-side {
+  flex: 0 0 50%;
+  padding: 50px 40px;
+  /* Áp dụng padding lớn hơn từ form cũ */
+  /* Nền form dùng màu đen hoặc nền gradient/solid tối đậm */
+  background: var(--secondary-color);
+  color: var(--white-color);
+  border-radius: 15px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    173deg,
+    rgba(156, 0, 0, 0.05) 39.75%,
+    #aa1013 89.93%
+  );
+}
+
+/* Khu vực Hình ảnh*/
+.image-side {
+  flex: 1;
+  display: block;
+  border-radius: 15px;
+
+}
+
+
+.image-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ------------------- FORM STYLING ------------------- */
+.form-title-new {
+  color: var(--primary-color);
+  /* Tiêu đề cam */
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.field-row {
+  margin-bottom: 18px;
+}
+
+.field-split {
+  display: flex;
+  gap: 15px;
+  /* Áp dụng gap lớn hơn */
+}
+
+/* Styling chung cho tất cả input */
+.form-side input[type="text"],
+.form-side input[type="tel"],
+.form-side input[type="number"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  /* Nền input hơi trong suốt */
+  color: var(--white-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-side input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-side input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: var(--primary-color);
+  /* Focus viền cam */
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 140, 74, 0.5);
+  /* Shadow cam */
+}
+
+.field-split input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Khu vực BMI và nút tính toán */
+.field-bmi {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.field-bmi input {
+  flex-grow: 1;
+}
+
+.btn-calculate-bmi {
+  background: #aa1013;
+  /* Nút tính BMI màu cam */
+  color: var(--secondary-color);
+  /* Chữ đen */
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-calculate-bmi:hover {
+  background: #000000;
+  /* Màu cam đậm hơn */
+  transform: translateY(-1px);
+}
+
+/* Nút Đăng ký tư vấn */
+.form-single-button {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-submit {
+  background: var(--white-color);
+  /* Nút submit màu trắng */
+  color: var(--secondary-color);
+  /* Chữ đen */
+  padding: 15px 30px;
+  /* Tăng padding */
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 80%;
+  max-width: 300px;
+}
+
+.btn-submit:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+/* ------------------- MEDIA QUERY (Dành cho Mobile) ------------------- */
+@media (max-width: 768px) {
+  /* (Giữ nguyên các thuộc tính responsive đã chỉnh sửa ở trên, đảm bảo form chiếm 100% và ẩn ảnh) */
+  .consultation-layout {
+    flex-direction: column;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .form-side {
+    flex: 0 0 100%;
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .image-side {
+    display: none;
+  }
+
+  .field-bmi {
+    flex-direction: column;
+  }
+
+  .field-bmi input,
+  .btn-calculate-bmi {
+    flex: 1;
+    width: 100%;
+  }
+}

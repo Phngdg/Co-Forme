@@ -1,0 +1,37 @@
+.header {
+  background: #111;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* logo thuộc header */
+.logo_header {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.logo_header span {
+  color: #f44336;
+}
+
+/* nav */
+.navbar_header ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.navbar_header a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.navbar_header a:hover {
+  color: #f44336;
+}
+
+/* menu khi respn */
